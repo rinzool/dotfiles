@@ -1,1 +1,7 @@
-# dotfiles
+# Dotfiles
+
+## Install 
+
+```
+bash init.sh
+```
