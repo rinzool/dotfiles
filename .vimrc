@@ -28,6 +28,11 @@ Plugin 'w0rp/ale' "Syntax corrector
 Plugin 'henrik/vim-indexed-search' "Tell number of match on a search
 Plugin 'akhaku/vim-java-unused-imports' "Color unused imports for Java and Scala
 Plugin 'tpope/vim-fugitive' "Git tools
+Plugin 'hashivim/vim-terraform' "format tf
+"
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
 
 autocmd BufWritePost * UnusedImports "Color unused import on save
 
@@ -37,7 +42,6 @@ au BufRead,BufNewFile *.sbt set filetype=scala
 
 "VIM Configuration
 set nocompatible        " Use Vim defaults (much better!)
-call pathogen#infect()  " Enable pathogen
 set backspace=indent,eol,start      " Enable usual backspace comportment
 set hidden      " Hide files while open other files
 syntax enable       " Enable syntax color
@@ -133,7 +137,6 @@ let g:pymode_rope_completion = 0
 autocmd BufRead *.java set include=^#\s*import
 autocmd BufRead *.java set includeexpr=substitute(v:fname,'\\.','/','g')
 
-
 set path+=** " Improve file search for :find command
 
 set statusline+=%#warningmsg#
@@ -141,9 +144,11 @@ set statusline+=%*
 " Tweaks for browsing
 let g:netrw_banner=0        " disable annoying banner
 " let g:netrw_browse_split=4  " open in prior window
- let g:netrw_altv=1          " open splits to the right
+let g:netrw_altv=1          " open splits to the right
 let g:netrw_liststyle=3     " tree view
 " let g:netrw_list_hide=netrw_gitignore#Hide()
 " let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 
 command! MakeTags !ctags -R . "Define :MakeTags to create a tag file (so C-[ jump to a method definition)
+
+let g:terraform_fmt_on_save=1
