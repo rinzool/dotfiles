@@ -29,6 +29,7 @@ Plugin 'henrik/vim-indexed-search' "Tell number of match on a search
 Plugin 'akhaku/vim-java-unused-imports' "Color unused imports for Java and Scala
 Plugin 'tpope/vim-fugitive' "Git tools
 Plugin 'hashivim/vim-terraform' "format tf
+Plugin 'airblade/vim-gitgutter' "tell which lines were modified since last commit
 "
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -150,5 +151,8 @@ let g:netrw_liststyle=3     " tree view
 " let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 
 command! MakeTags !ctags -R . "Define :MakeTags to create a tag file (so C-[ jump to a method definition)
+
+" Some custom operations for different file types
+autocmd BufWritePre *.py :%s/\s\+$//e
 
 let g:terraform_fmt_on_save=1
